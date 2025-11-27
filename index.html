@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="todo">
+      <div class="card">
+        <h1>Todo-List with Vite</h1>
+        <div class="input">
+          <input id="task" type="text" placeholder="Add New Task.." />
+          <div class="buttons">
+            <button class="add" id="add">Add Task</button>
+            <button class="deleteall" id="delete">Clear All</button>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="pbar">
+            <div class="cbar" id="cbar"></div>
+          </div>
+          <p>
+            <span id="percentage"></span>% completed <br> <span id="fraction"></span>
+          </p>
+        </div>
+      </div>
+
+      <table class="tasks">
+        <tbody id="table">
+          <tr class="rowHeader">
+            <th class="index" id="index">No.</th>
+            <th class="task" id="task">Task</th>
+            <th class="status" id="status">Status</th>
+            <th class="delete" id="delete">Delete</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
