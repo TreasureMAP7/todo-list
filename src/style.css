@@ -163,7 +163,7 @@ td {
 .task {
   width: 60%;
   border-right: var(--border-table);
-  word-break: break-all;
+  word-break: normal;
 }
 
 .status {
@@ -192,6 +192,7 @@ td > input {
 
 .left {
   justify-content: left;
+  text-align: justify;
 }
 
 @media screen and (max-width: 767px) {
