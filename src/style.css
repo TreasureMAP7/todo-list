@@ -22,6 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .card {
@@ -34,9 +35,11 @@
   padding: 1rem 2rem;
   border-radius: 5px;
   gap: 1.5rem;
-  width: 70%;
-  max-width: 2000px;
-  /* background-color: #c9c9c9; */
+  width: 80%;
+  top: 0;
+  position: sticky;
+  background-color: #ffffff;
+  border: var(--border-table);
 }
 
 h1 {
@@ -104,7 +107,6 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: sticky;
   top: 0;
   gap: 8px;
   width: 100%;
@@ -119,6 +121,7 @@ button {
 }
 
 .cbar {
+  position: absolute;
   background-color: #5768d6;
   width: 0%;
   height: 10px;
