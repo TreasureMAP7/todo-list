@@ -17,20 +17,22 @@
     <div class="todo">
       <div class="card">
         <h1>Todo-List with Vite</h1>
+        <div class="progress">
+          <div class="pbar">
+            <div class="cbar" id="cbar"></div>
+          </div>
+          <p>
+            <span id="percentage"></span>% completed <br />
+            <span id="fraction"></span>
+          </p>
+        </div>
         <div class="input">
           <input id="task" type="text" placeholder="Add New Task.." />
           <div class="buttons">
             <button class="add" id="add">Add Task</button>
             <button class="deleteall" id="delete">Clear All</button>
           </div>
-        </div>
-        <div class="progress">
-          <div class="pbar">
-            <div class="cbar" id="cbar"></div>
-          </div>
-          <p>
-            <span id="percentage"></span>% completed <br> <span id="fraction"></span>
-          </p>
+          <p class="error" id="error"></p>
         </div>
       </div>
 

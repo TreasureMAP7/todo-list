@@ -2,11 +2,13 @@ const addTask = document.getElementById("add")! as HTMLButtonElement;
 const deleteAllTask = document.getElementById("delete")! as HTMLButtonElement;
 const task = document.getElementById("task")! as HTMLInputElement;
 
-const table = document.getElementById("table")! as HTMLTableElement;
-
 const percentage = document.getElementById("percentage")! as HTMLSpanElement;
 const fraction = document.getElementById("fraction")! as HTMLSpanElement;
 const cbar = document.getElementById("cbar")! as HTMLDivElement;
+
+const error = document.getElementById("error")! as HTMLParagraphElement;
+
+const table = document.getElementById("table")! as HTMLTableElement;
 
 let tasks: number = 0;
 let completed: number = 0;
@@ -19,12 +21,18 @@ window.addEventListener("load", () => {
 addTask.addEventListener("click", () => {
   if (task.value != "") {
     createRow();
+    error.innerHTML = "";
+  } else {
+    error.innerHTML = "Please input a task name!";
   }
 });
 
 deleteAllTask.addEventListener("click", () => {
   if (tasks > 0) {
     removeAll();
+    error.innerHTML = "";
+  } else {
+    error.innerHTML = "No task available!";
   }
 });
 
@@ -65,7 +73,6 @@ function createRow(isLoading = false) {
     newRow.appendChild(newData);
   }
   table.appendChild(newRow);
-  console.log("New Task Created");
   tasks++;
   if (!isLoading) {
     updateIndex();
@@ -77,7 +84,7 @@ function createRow(isLoading = false) {
 function checkbox(object: HTMLTableCellElement) {
   const row = object.parentElement!;
   const task = row.querySelectorAll("td")[1];
-  const checkbox = object.querySelector("input")!;
+  const checkbox = object.querySelector("input")! as HTMLInputElement;
   if (checkbox.checked) {
     task.style.textDecoration = "line-through";
     completed++;
@@ -91,7 +98,7 @@ function checkbox(object: HTMLTableCellElement) {
 
 function removeTask(object: HTMLTableCellElement) {
   const row = object.parentElement!;
-  const check = row.querySelector("input") as HTMLInputElement;
+  const check = row.querySelector("input")! as HTMLInputElement;
   row.remove();
   tasks--;
   if (check.checked) {
@@ -142,13 +149,11 @@ function updateProgress() {
     fract = `None`;
   }
 
-  if (percent == 100) {
+  if (percent >= 100) {
     cbar.style.background = "#64df42ff";
   } else {
     cbar.style.background = "#5768d6";
   }
-  // console.log(totalTask);
-  // console.log(completedTask);
 
   percentage.innerHTML = percent.toString();
   fraction.innerHTML = `(${fract})`;
@@ -179,12 +184,12 @@ function saveData() {
 
     const td = row.querySelectorAll("td");
     const text = td[1].textContent!;
-    const checkbox = td[2].querySelector("input") as HTMLInputElement;
+    const checkbox = td[2].querySelector("input")! as HTMLInputElement;
 
-    data.push({
-      task: text,
-      status: checkbox.checked,
-    });
+      data.push({
+        task: text,
+        status: checkbox.checked,
+      });
   });
 
   localStorage.setItem("tasks", JSON.stringify(data));
@@ -208,8 +213,8 @@ function loadData() {
     check.checked = item.status;
 
     if (item.status) {
-      const task = lastRow.querySelectorAll("td")[1];
-      task.style.textDecoration = "line-through";
+      const taskLoad = lastRow.querySelectorAll("td")[1];
+      taskLoad.style.textDecoration = "line-through";
       completed++;
     }
   });
