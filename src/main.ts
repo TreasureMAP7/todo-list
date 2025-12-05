@@ -87,6 +87,7 @@ function checkbox(object: HTMLTableCellElement) {
   const checkbox = object.querySelector("input")! as HTMLInputElement;
   if (checkbox.checked) {
     task.style.textDecoration = "line-through";
+    task.style.textDecorationThickness = 2 + "px";
     completed++;
   } else {
     task.style.textDecoration = "none";
@@ -186,10 +187,10 @@ function saveData() {
     const text = td[1].textContent!;
     const checkbox = td[2].querySelector("input")! as HTMLInputElement;
 
-      data.push({
-        task: text,
-        status: checkbox.checked,
-      });
+    data.push({
+      task: text,
+      status: checkbox.checked,
+    });
   });
 
   localStorage.setItem("tasks", JSON.stringify(data));
@@ -215,6 +216,7 @@ function loadData() {
     if (item.status) {
       const taskLoad = lastRow.querySelectorAll("td")[1];
       taskLoad.style.textDecoration = "line-through";
+      taskLoad.style.textDecorationThickness = 2 + "px";  
       completed++;
     }
   });
